@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+
+import sys
+import os
+
+PROJECT_ROOT_DIRECTORY = os.path.dirname(
+    os.path.dirname(os.path.realpath(__file__)))
+
+def inject(lib_path):
+    path = os.path.join(PROJECT_ROOT_DIRECTORY, 'lib', lib_path)
+    sys.path.insert(0, path)
+
+# version dependent libraries
+if sys.version_info[0] >= 3:
+    inject('pyyaml/lib3')
+else:
+    inject('pyyaml/lib')
+
+if os.path.exists(os.path.join(PROJECT_ROOT_DIRECTORY, 'dirchromatic')):
+    if PROJECT_ROOT_DIRECTORY not in sys.path:
+        sys.path.insert(0, PROJECT_ROOT_DIRECTORY)
+        os.putenv('PYTHONPATH', PROJECT_ROOT_DIRECTORY)
+
+import dirchromatic
+
+def main():
+    dirchromatic.cli.main()
+
+if __name__ == '__main__':
+    main()
