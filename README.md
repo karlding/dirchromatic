@@ -1,5 +1,5 @@
 # dirchromatic
-programatically generate your .dircolors file
+programatically generate your ``.dircolors`` file for use with ``LS_COLORS``
 
 ## Getting Started
 ```bash
@@ -30,14 +30,16 @@ The ``types.yaml`` file lets you register types, and their associated colours.
 ```yaml
 - colour: 01;31
   description: Archive files
-  src: archive.yaml
+  src: types/archive.yaml
 - colour: 01;36 
-  src: audio.yaml
+  src: types/audio.yaml
 - colour: 00;35
-  src: image.yaml
+  src: types/image.yaml
 ```
 
-**Note**: The description is optional. The ``src`` and ``colour`` parameters are not.
+All paths here are specified relative to where the ``types.yaml`` file is located.
+
+**Note**: The ``description`` is optional. The ``src`` and ``colour`` parameters are not.
 
 ### archive.yaml
 
