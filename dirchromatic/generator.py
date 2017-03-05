@@ -18,24 +18,29 @@ class Generator(object):
 
     def generate(self, types):
         log = self._log
+        lines = []
         for type in types:
             try:
                 self._log.info('Generating types for %s' % type['src'])
-                self._generate(type)
+                if 'description' in type.keys():
+                    lines.append('\n## %s' % type['description'])
+                else:
+                    lines.append('\n##')
+                lines.extend(self._generate(type))
             except Exception as e:
                 self._log.error('Error processing %s' % type)
+        return lines
 
     def _generate(self, type):
         path = os.path.join(self._path, type['src'])
-        try:
-            with open(path) as fin:
-                data = yaml.safe_load(fin)
-            if data:
-                longest = max(map(len, data))
-                for ext in data:
-                    print(('%s' % ext).ljust(longest + 2) + '%s' % type['colour'])# + '%s' % (ext, type['colour']))
-        except Exception as e:
-            print(e)
+        lines = []
+        with open(path) as fin:
+            data = yaml.safe_load(fin)
+        if data:
+            longest = max(map(len, data))
+            for ext in data:
+                lines.append(('%s' % ext).ljust(longest + 2) + '%s' % type['colour'])# + '%s' % (ext, type['colour']))
+        return lines
 
 class DispatchError(Exception):
     pass
