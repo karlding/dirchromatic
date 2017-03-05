@@ -4,7 +4,8 @@
   src: types/archive.yaml
 - colour: 01;36
   src: types/audio.yaml
-- description: Binary files
+- colour: 01;30
+  description: Binary files
   src: types/binary.yaml
 - colour: 00;33
   description: Source code files
