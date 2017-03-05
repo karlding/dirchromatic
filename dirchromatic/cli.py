@@ -7,6 +7,7 @@ import os
 from argparse import ArgumentParser
 
 from .logger import Logger
+from .generator import Generator, DispatchError
 from .types import TypeReader, ReadingError
 from .util import module
 
@@ -26,6 +27,11 @@ def main():
         add_options(parser)
         options = parser.parse_args()
         types = read_types(options.types_file)
+        print(types)
+        if not isinstance(types, list):
+            raise ReadingError('Types file must be a list of types')
+        generator = Generator(os.path.dirname(options.types_file))
+        generator.generate(types)
     except ReadingError as e:
         log.error('%s' % e)
     except KeyboardInterrupt:
