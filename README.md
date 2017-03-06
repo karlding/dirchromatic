@@ -1,5 +1,10 @@
 # dirchromatic
-programatically generate your ``.dircolors`` file for use with ``LS_COLORS``
+
+[![Build Status](https://travis-ci.org/karlding/dirchromatic.svg?branch=master)](https://travis-ci.org/karlding/dirchromatic)
+
+programatically generate your ``.dircolors`` file (for use with ``LS_COLORS``)
+
+The idea behind dirchromatic is that usually, when you're configuring your ``.dircolors`` file, you want to assign the same colours to similar file types (images, documents, videos). So instead, we can maintain a list of file extensions, and simply "tag" each type with the appropriate colours. Then, it will generate an appropriate ``.dircolors`` file that can be copied (or symlinked) as appropriate. 
 
 ## Getting Started
 ```bash
@@ -16,13 +21,15 @@ if [ -r "$HOME/.dircolors" ]; then
 fi
 ```
 
-## Configuration
+## Usage
 ```
 bin/dirchromatic [--types=types.yaml] [--template=template.tmpl] [--output=.dircolors]
 ```
 
 ## Example
-Here's an example configuration
+There's a few files included already in the repository, which you can look through and play around with.
+
+In addition, here's a simplified example
 
 ### types.yaml
 The ``types.yaml`` file lets you register types, and their associated colours.
@@ -41,7 +48,7 @@ All paths here are specified relative to where the ``types.yaml`` file is locate
 
 **Note**: The ``description`` is optional. The ``src`` and ``colour`` parameters are not.
 
-### archive.yaml
+### types/archive.yaml
 
 Each registered type has its own YAML file, which is simply a list of file extensions to apply the type to.
 
@@ -52,7 +59,7 @@ Each registered type has its own YAML file, which is simply a list of file exten
 - zip
 ```
 
-### audio.yaml
+### types/audio.yaml
 ```yaml
 ---
 - mp3
@@ -60,7 +67,7 @@ Each registered type has its own YAML file, which is simply a list of file exten
 - oog
 ```
 
-### image.yaml
+### types/image.yaml
 ```yaml
 ---
 - gif
