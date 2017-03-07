@@ -42,5 +42,7 @@ def main():
         write_file(template, fd, line_buffer)
     except ReadingError as e:
         log.error('%s' % e)
+    except DispatchError as e:
+        log.error('%s' % e)
     except KeyboardInterrupt:
         exit(1)

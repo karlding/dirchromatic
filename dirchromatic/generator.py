@@ -27,8 +27,10 @@ class Generator(object):
                 else:
                     lines.append('\n##')
                 lines.extend(self._generate(type))
+            except KeyError as e:
+                raise DispatchError('Type %s is issing key %s' % (type, e))
             except Exception as e:
-                self._log.error('Error processing %s' % type)
+                self._log.error('Error processing %s' % e)
         return lines
 
     def _generate(self, type):
@@ -39,7 +41,7 @@ class Generator(object):
         if data:
             longest = max(map(len, data))
             for ext in data:
-                lines.append(('%s' % ext).ljust(longest + 2) + '%s' % type['colour'])# + '%s' % (ext, type['colour']))
+                lines.append(('%s' % ext).ljust(longest + 2) + '%s' % type['colour'])
         return lines
 
 class DispatchError(Exception):
