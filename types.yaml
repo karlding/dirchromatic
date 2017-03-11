@@ -1,29 +1,31 @@
 ---
-- colour: 01;31
-  description: Archive files
+- colour: 01;31                           # red
+  description: archive files
   src: types/archive.yaml
-- colour: 01;36
+- colour: 01;36                           # bright red
+  description: audio formats
   src: types/audio.yaml
-- colour: 01;30
+- colour: 01;30                           # bright black
   description: Binary files
   src: types/binary.yaml
-- colour: 00;33
-  description: Source code files
+- colour: 00;33                           # yellow
+  description: source code files
   src: types/code.yaml
-- colour: 00;36
-  description: Config files
+- colour: 00;36                           # cyan
+  description: config files
   src: types/config.yaml
-- colour: 00;32
+- colour: 00;32                           # green
   description: Data / database
   src: types/data.yaml
-- colour: 00;32
-  description: Document files
+- colour: 00;32                           # green
+  description: document files
   src: types/doc.yaml
-- colour: 00;35
+- colour: 00;35                           # magenta
+  description: image formats
   src: types/image.yaml
-- colour: 01;37
+- colour: 01;37                           # base1 + bold
   description: Files of special interest
   src: types/other.yaml
-- colour: 01;36
-  description: Video formats
+- colour: 01;36                           # audio + bold
+  description: video formats
   src: types/video.yaml

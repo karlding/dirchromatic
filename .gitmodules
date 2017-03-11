@@ -1,3 +1,7 @@
 [submodule "lib/pyyaml"]
 	path = lib/pyyaml
 	url = https://github.com/yaml/pyyaml
+[submodule "types"]
+	path = types
+	url = https://github.com/karlding/dirchromatic-types.git
+	branch = master
